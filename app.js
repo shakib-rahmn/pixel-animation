@@ -11,25 +11,19 @@ const mainBox = {
 // total pixel boxes
 const totalPixel = mainBox.countPixel();
 
-// calc widht and height
+// calculating width
 const pixelWidth = (mainBox.box.clientWidth - mainBox.totalCol - 1) / mainBox.totalCol;
-
-console.log({pixelWidth});
 
 // array for all index
 const pixelsArray = [];
 
-// creating pixels
+// creating pixel boxes
 for (let i = 0; i < totalPixel; i++) {
+  pixelsArray.push(i);
   let newDiv = document.createElement("div");
-
   newDiv.style.width = `${pixelWidth}px`;
   newDiv.style.height = `${pixelWidth}px`;
-
   newDiv.classList.add("pixel");
-
-  pixelsArray.push(i);
-
   mainBox.box.appendChild(newDiv);
 }
 
@@ -41,12 +35,17 @@ let randomDigit = (value) => {
   return Math.ceil(Math.random() * value);
 };
 
-// randmixing index
+// shuffling index
 pixelsArray.sort(() => randomDigit(0.1));
 
 pixelsArray.forEach(index => {
   pixelsList[index].classList.add('animate');
-  pixelsList[index].style.animationDuration = `${randomDigit(4)+1}s`;
-  pixelsList[index].style.animationDelay = `${randomDigit(3000)+1000}ms`;
-  pixelsList[index].style.backgroundColor = `hsl(0, 0%, ${randomDigit(64)}%)`;
+
+  let style = {
+    animationDuration: `${randomDigit(4)+1}s`,
+    animationDelay: `${randomDigit(6000)+1000}ms`,
+    backgroundColor: `hsl(0, 0%, ${randomDigit(64)}%)`,
+  }
+
+  Object.assign(pixelsList[index].style, style);
 })

@@ -38,7 +38,7 @@ for (let i = 0; i < totalPixel; i++) {
 const pixelsList = document.querySelectorAll('.pixel');
 
 // generates random value
-let randomDigit = (value) => {
+let randomDigit = (value = 1) => {
   return Math.ceil(Math.random() * value);
 };
 
